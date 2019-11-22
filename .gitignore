@@ -1,0 +1,9 @@
+*
+!*/
+!*.py
+!binet.ipynb
+!.gitignore
+!*.png
+!binet_docker
+!README.md
+
