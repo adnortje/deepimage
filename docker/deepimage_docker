@@ -1,0 +1,34 @@
+# Deep Image Docker Image for Pytorch and Python 3.6.
+
+# Parent image
+FROM ufoym/deepo:pytorch-py36-cu90
+
+# Some tools (Python 3.6)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        less \
+        nano \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        setuptools \
+        pip \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        numpy \
+        scipy \
+        matplotlib \
+        pandas \
+        sympy \
+        ipython \
+        nose \
+        jupyter \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        tensorboardX \
+    python -m pip --no-cache-dir install --upgrade \
+        scikit-image \
+    python -m pip --no-cache-dir install --upgrade \
+        Pillow \
+
+# Working directory
+WORKDIR /home
