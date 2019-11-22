@@ -1,2 +1,2 @@
-# deepimage
-Implementation of existing progressive deep image compression codecs/
+# Deep Image Compression
+Implementation of existing deep image compression codecs/
