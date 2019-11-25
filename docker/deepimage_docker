@@ -3,17 +3,16 @@
 # Parent image
 FROM ufoym/deepo:pytorch-py36-cu90
 
-# Some tools (Python 3.6)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
+# Install Dependencies
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
         less \
-        nano \
-        && \
-    python -m pip --no-cache-dir install --upgrade \
+        vim \
+        git \
+    && python -m pip --no-cache-dir install --upgrade \
         setuptools \
         pip \
-        && \
-    python -m pip --no-cache-dir install --upgrade \
+    && python -m pip --no-cache-dir install --upgrade \
         numpy \
         scipy \
         matplotlib \
@@ -22,13 +21,15 @@ RUN apt-get update && \
         ipython \
         nose \
         jupyter \
-        && \
-    python -m pip --no-cache-dir install --upgrade \
         tensorboardX \
-    python -m pip --no-cache-dir install --upgrade \
         scikit-image \
-    python -m pip --no-cache-dir install --upgrade \
         Pillow \
 
-# Working directory
-WORKDIR /home
+# CLIC COMPRESSION CHALLENGE DATASET
+ADD https://data.vision.ee.ethz.ch/cvl/clic/professional_train.zip \
+    https://data.vision.ee.ethz.ch/cvl/clic/professional_valid.zip \ 
+    https://data.vision.ee.ethz.ch/cvl/clic/test/professional_test.zip \ 
+    ./Clic
+
+# Clone DeepImage 
+RUN git clone https://github.com/adnortje/deepimage.git
